@@ -169,5 +169,8 @@ WAGTAILSEARCH_BACKENDS = {
 WAGTAILADMIN_BASE_URL = "http://example.com"
 
 # more custom settings
-WAGTAILDOCS_DOCUMENT_MODEL = "base.H5PModuleFile"
+# WAGTAILDOCS_DOCUMENT_MODEL = "base.ExtendedDocument"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+WAGTAILDOCS_CONTENT_TYPES = {
+    'h5p': 'application/zip'
+}

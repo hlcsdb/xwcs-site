@@ -1,10 +1,14 @@
 from django.db import models
 
-from wagtail import blocks
+from wagtail.blocks import CharBlock, RichTextBlock
+from wagtail.snippets.blocks import SnippetChooserBlock
 from wagtail.models import Page
 from wagtail.fields import RichTextField, StreamField
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.search import index
+
+from xwcs.base.models import H5PModule
+from xwcs.base.blocks import H5PChooserBlock
 
 class LessonIndexPage(Page):
     intro = RichTextField(blank=True)
@@ -20,8 +24,10 @@ class LessonPage(Page):
 
     date = models.DateField("Updated date")
     body = StreamField([
-        ('heading', blocks.CharBlock(form_classname="title")),
-        ('paragraph', blocks.RichTextBlock())],
+        ('heading', CharBlock(form_classname="title")),
+        ('paragraph', RichTextBlock()),
+        ('h5p_module', H5PChooserBlock())
+        ],
         use_json_field=True
     )        
     # Search index configuration

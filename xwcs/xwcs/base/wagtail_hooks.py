@@ -1,12 +1,19 @@
 from wagtail import hooks
-from wagtail.snippets.models import register_snippet
-from wagtail.snippets.views.snippets import SnippetViewSet, SnippetViewSetGroup
+from wagtail.admin.panels import (
+    FieldPanel,
+    MultipleChooserPanel,
 
-@hooks.register("register_icons")
-def register_icons(icons):
-    return icons + [
-        "wagtailadmin/icons/media.svg"
+)
+from wagtail.snippets.models import register_snippet
+
+from xwcs.base.models import H5PModule
+from xwcs.base.views import h5p_module_chooser_viewset
+
+@hooks.register("register_admin_viewset")
+def register_viewset():
+    return [
+        h5p_module_chooser_viewset
     ]
 
-class H5PViewSet(SnippetViewSet):
-    ...
+register_viewset()
+

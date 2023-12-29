@@ -1,0 +1,18 @@
+<h2>HELLO ! I'M the h5p template
+</h2>
+<p id="cool">hello</p>
+
+<p>
+<div id="h5p{{ value.id }}"></div>
+
+<script type="text/javascript" src="/static/js/h5p_standalone/dist/main.bundle.js"></script>
+<script>
+
+const el = document.getElementById("h5p{{ value.id }}");
+const options = {
+  h5pJsonPath: "{{ value.h5p_json }}",
+  frameJs: "/static/js/h5p_standalone/dist/frame.bundle.js",
+  frameCss: "/static/js/h5p_standalone/dist/styles/h5p.css",
+}
+new H5PStandalone.H5P(el, options); </script>
+<img src="/static/images/e19.jpg" width="50px">

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags h5p_tags %}
 
 {% include_block page.body %}
 
@@ -11,9 +11,10 @@
     <h1>{{ page.title }}</h1>
     <p class="meta">{{ page.date }}</p>
     {% for block in page.body %}
-        <section>{% include_block block %}</section>
+            {% include_block block %}
     {% endfor %}
 
     <p><a href="{{ page.get_parent.url }}">return to index</a></p>
+
 
 {% endblock %}
